@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>campo minado</title>
+
+    <link rel="shortcut icon" href="images/bomb.svg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="images/mine2.svg" alt="mina">
+        <h1>Miner</h1>
+    </header>
+    <main>
+        <section id="game">
+            <nav id="game-difficulty">
+                <div id="options">
+                    <input type="radio" name="difficulty" checked class="option" id="easy" value="10">
+                    <input type="radio" name="difficulty" class="option" id="medium" value="20">
+                    <input type="radio" name="difficulty" class="option" id="hard" value="30">
+                    <label for="easy"><p>Easy</p></label>
+                    <label for="medium"><p>Medium</p></label>
+                    <label for="hard"><p>Hard</p></label>
+                    <span></span>
+                </div>
+                <div id="button">
+                    <input type="button" class="button" id="start" value="Start">
+                </div>
+            </nav>
+        </section>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>

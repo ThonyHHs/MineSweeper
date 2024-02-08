@@ -1,0 +1,229 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+
+:root{
+    --clr-back0: #252741;
+    --clr-back1: #8183C0;
+    --clr-txt: #fbf5f3;
+    --clr-opt: #D070EB;
+    --clr-gm: #904ca3;
+
+    --font0: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body{
+    height: 100%;
+}
+
+body{
+    background-color: var(--clr-back0);
+    color: var(--clr-txt);
+    font-family: var(--font0);
+}
+
+header{
+    background-color: var(--clr-back1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+}
+
+header img{
+    width: 40px;
+    fill: #252741;
+    margin: 10px;
+}
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+}
+
+#game{
+    display: grid;
+    justify-content: center;
+}
+
+
+#game-difficulty #options{
+    position: relative;
+    border: 3px solid;
+    border-radius: 25px;
+    height: 50px;
+    width: 300px;
+    display: flex;
+}
+
+#game-difficulty #options label{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    flex: 1;
+    font-family: var(--font0);
+    color: white;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#game-difficulty span{
+    position: absolute;
+    background-color: #D070EB;
+    height: 100%;
+    width: 33%;
+    left: 0;
+    top: 0;
+    border-radius: 25px;
+    z-index: -1;
+    transition: 0.2s;
+}
+#game-difficulty label:hover{
+    cursor: pointer;
+}
+#game-difficulty .option:nth-child(1):checked~span{
+    left: 0;
+}
+#game-difficulty .option:nth-child(2):checked~span{
+    left: 33%;
+}
+#game-difficulty .option:nth-child(3):checked~span{
+    left: 67%;
+}
+#game-difficulty #options input{
+    display: none;
+}
+#game-difficulty #button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+#game-difficulty #start {
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--clr-opt);
+    color: white;
+    font-family: var(--font0);
+    font-size: large;
+}
+#start:hover{
+    cursor: pointer;
+}
+
+
+#game-container{
+    width: 600px;
+    height: 600px;
+    border: 2px solid var(--clr-gm);
+    border-radius: 25px;
+    display: none;
+
+    z-index: 3333;
+}
+
+.row{
+    display: grid;
+}
+
+.cell{
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border: 1px solid var(--clr-gm);
+    background-color: var(--clr-gm);
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5em;
+}
+
+.cell img{
+    width: 100%;
+}
+
+
+#mode-container {
+    height: 50px;
+    width: 200px;
+    border: 2px solid;
+    border-radius: 25px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 20px;
+}
+#mode-container label{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    flex: 1;
+    border-radius: 25px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+#mode-container label:hover{
+    cursor: pointer;
+}
+#mode-container label img {
+    height: 80%;
+    z-index: -0;
+}
+#mode-container span{
+    position: absolute;
+    z-index: -1;
+    background-color: var(--clr-opt);
+    height: 100%;
+    width: 50%;
+    border-radius: 25px;
+    left: 0;
+    transition: 0.5s;
+}
+#mode-container #bomb:checked ~ span{
+    left: 0;
+}
+#mode-container #flag:checked ~ span{
+    left: 50%;
+}
+#mode-container input {
+    display: none;
+}
+
+
+#restart{
+    margin: auto;
+    padding: 12px 30px;
+    margin-top: 15px;
+    border-radius: 25px;
+    border: none;
+    background-color: var(--clr-opt);
+    font-family: var(--font0);
+    font-size: large;
+    color: white;
+}
+
+#restart:hover{
+    cursor: pointer;
+}
+
+#restart:active{
+    background-color: var(--clr-gm);
+}
