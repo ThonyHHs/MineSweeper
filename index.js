@@ -135,63 +135,24 @@ function bombValidation(row, col, gridSize){
 
 function numBombAround(row, col, gridSize){
     let count=0;
-    let n =[row-1, col], ne=[row-1, col+1], e=[row, col+1], se=[row+1, col+1], s=[row+1, col], sw=[row+1, col-1], w=[row, col-1], nw=[row-1, col-1];
-    // N
-    if (cellValidation(n[0], n[1], gridSize)==true) {
-        if (bombValidation(n[0], n[1], gridSize)) {
-            count++;
-        }
-    }
-    // NE
-    if (cellValidation(ne[0], ne[1], gridSize)) {
-        if (bombValidation(ne[0], ne[1], gridSize)) {
-            count++;
-        }
-    }
-    // E
-    if (cellValidation(e[0], e[1], gridSize)) {
-        if (bombValidation(e[0], e[1], gridSize)) {
-            count++;
-        }
-    }
-    // SE
-    if (cellValidation(se[0], se[1], gridSize)) {
-        if (bombValidation(se[0], se[1], gridSize)) {
-            count++;
-        }
-    }
-    // S
-    if (cellValidation(s[0], s[1], gridSize)) {
-        if (bombValidation(s[0], s[1], gridSize)) {
-            count++;
-        }
-    }
-    // SW
-    if (cellValidation(sw[0], sw[1], gridSize)) {
-        if (bombValidation(sw[0], sw[1], gridSize)) {
-            count++;
-        }
-    }
-    // W
-    if (cellValidation(w[0], w[1], gridSize)) {
-        if (bombValidation(w[0], w[1], gridSize)) {
-            count++;
-        }
-    }
-    // NW
-    if (cellValidation(nw[0], nw[1], gridSize)) {
-        if (bombValidation(nw[0], nw[1], gridSize)) {
-            count++;
+    for (let i = -1; i<2; i++) {
+        for (let j = -1; j<2; j++) {
+            console.log(i, j);
+            if (cellValidation(row+i, col+j, gridSize)) { 
+                if (bombValidation(row+i, col+j, gridSize)) {
+                    count++;
+                }
+            }
         }
     }
     return count;
 }
 
 function displayNumBomb(cellName, gridSize){
-    let coordenate = cellName.split("_");
-    coordenate = [Number(coordenate[0]), Number(coordenate[1])];
+    let coordinate = cellName.split("_");
+    coordinate = [Number(coordinate[0]), Number(coordinate[1])];
     let cell = document.getElementById(cellName);
-    let numBomb = numBombAround(coordenate[0], coordenate[1], gridSize);
+    let numBomb = numBombAround(coordinate[0], coordinate[1], gridSize);
     
     if(numBomb != 0){
         cell.textContent = `${numBomb}`;
@@ -202,16 +163,16 @@ function displayNumBomb(cellName, gridSize){
 function input(cellName, gridSize){
     let cell = document.getElementById(cellName);
     let cellImg = document.createElement("img");
-    let coordenate = cellName.split("_");
+    let coordinate = cellName.split("_");
     let mode = Number(document.querySelector('input[name="mode"]:checked').value);
-    coordenate = [Number(coordenate[0]), Number(coordenate[1])];
+    coordinate = [Number(coordinate[0]), Number(coordinate[1])];
     
     if (mode) {
         cellImg.className = "flag";
         cellImg.src = "images/flag.svg";
         cell.appendChild(cellImg);
     } else {
-        if(bombValidation(coordenate[0], coordenate[1], gridSize)){
+        if(bombValidation(coordinate[0], coordinate[1], gridSize)){
             gameOver(gridSize);
         } else {
             displayNumBomb(cellName, gridSize);
